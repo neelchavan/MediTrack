@@ -1,0 +1,26 @@
+# macOS
+.DS_Store
+
+# IntelliJ IDEA
+.idea/
+*.iml
+out/
+
+# VS Code local settings
+.vscode/
+
+# Java build outputs
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+
+# Common build directories
+build/
+target/
+
+# Logs and JVM crash reports
+*.log
+hs_err_pid*
+replay_pid*
