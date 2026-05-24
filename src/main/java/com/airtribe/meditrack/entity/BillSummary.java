@@ -1,16 +1,23 @@
 package main.java.com.airtribe.meditrack.entity;
 
-public final class BillSummary {
+class BillSummary
+{
+
 
     private final int totalBills;
     private final double totalRevenue;
     private final double pendingAmount;
 
-    public BillSummary(int totalBills, double totalRevenue, double pendingAmount) {
+    //  Constrcutors
+
+    public BillSummary(int totalBills, double totalRevenue, double pendingAmount) 
+    {
         this.totalBills = totalBills;
         this.totalRevenue = totalRevenue;
         this.pendingAmount = pendingAmount;
     }
+
+    // Getter
 
     public int getTotalBills() {
         return totalBills;
@@ -23,4 +30,8 @@ public final class BillSummary {
     public double getPendingAmount() {
         return pendingAmount;
     }
+
+
+    
+    
 }

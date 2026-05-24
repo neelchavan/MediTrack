@@ -4,13 +4,19 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 
-public class Appointment {
+class Appointment
+{
+
+
     private int appointmentId;
     private Patient patient;
     private Doctor doctor;
     private LocalDate appointmentDate;
     private LocalTime appointmentTime;
     private String appointmentStatus;
+
+
+    // Constructor
 
     public Appointment(int appointmentId, Patient patient, Doctor doctor, LocalDate appointmentDate,    LocalTime appointmentTime, String appointmentStatus) {
         this.appointmentId = appointmentId;
@@ -21,29 +27,39 @@ public class Appointment {
         this.appointmentStatus = appointmentStatus;
     }
 
+    // Getter
+
     public int getAppointmentId() {
         return appointmentId;
     }
+
 
     public Patient getPatient() {
         return patient;
     }
 
+
     public Doctor getDoctor() {
         return doctor;
     }
+
 
     public LocalDate getAppointmentDate() {
         return appointmentDate;
     }
 
+
     public LocalTime getAppointmentTime() {
         return appointmentTime;
     }
 
+
     public String getAppointmentStatus() {
         return appointmentStatus;
     }
+
+
+    // Setter
 
     public void setAppointmentDate(LocalDate appointmentDate) {
         this.appointmentDate = appointmentDate;
@@ -56,5 +72,7 @@ public class Appointment {
     public void setAppointmentStatus(String appointmentStatus) {
         this.appointmentStatus = appointmentStatus;
     }
+
+    
 }
 
