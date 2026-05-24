@@ -5,6 +5,7 @@
 .idea/
 *.iml
 out/
+ImplementationDocs
 
 # VS Code local settings
 .vscode/
