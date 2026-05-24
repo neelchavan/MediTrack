@@ -1,82 +1,68 @@
 package main.java.com.airtribe.meditrack.entity;
 
-class Bill 
-{
-    private int billId;
-    private Patient patient;
-    private double consultationCharge;
-    private double medicineCharge;
-    private double testCharge;
-    private double totalAmount;
-    private boolean paymentStatus;
+import main.java.com.airtribe.meditrack.interfaces.Payable;
 
+/**
+ * Bill entity representing a billing record for an appointment.
+ * Implements Payable interface to support payment tracking.
+ * Links billing directly to appointments for accurate tracking.
+ */
+public class Bill implements Payable {
+    private int id;
+    private Appointment appointment;
+    private double amount;
+    private String status; // PAID or PENDING
 
-    public Bill(int billId, Patient patient, double consultationCharge, double medicineCharge, double testCharge,   double totalAmount, boolean paymentStatus) 
-    {
-        this.billId = billId;
-        this.patient = patient;
-        this.consultationCharge = consultationCharge;
-        this.medicineCharge = medicineCharge;
-        this.testCharge = testCharge;
-        this.totalAmount = totalAmount;
-        this.paymentStatus = paymentStatus;
+    public Bill(int id, Appointment appointment, double amount, String status) {
+        this.id = id;
+        this.appointment = appointment;
+        this.amount = amount;
+        this.status = status;
     }
 
-// Getter 
-
-    public int getBillId() {
-        return billId;
+    public int getId() {
+        return id;
     }
 
-
-    public Patient getPatient() {
-        return patient;
+    public Appointment getAppointment() {
+        return appointment;
     }
 
-
-    public double getConsultationCharge() {
-        return consultationCharge;
+    public double getAmount() {
+        return amount;
     }
 
-
-    public double getMedicineCharge() {
-        return medicineCharge;
+    public String getStatus() {
+        return status;
     }
 
-
-    public double getTestCharge() {
-        return testCharge;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-
-    public double getTotalAmount() {
-        return totalAmount;
+    @Override
+    public double calculateTotalAmount() {
+        return amount;
     }
 
-
-    public boolean isPaymentStatus() {
-        return paymentStatus;
+    @Override
+    public boolean getPaymentStatus() {
+        return "PAID".equalsIgnoreCase(status);
     }
 
-
-    // Setter
-
-    public void setConsultationCharge(double consultationCharge) {
-        this.consultationCharge = consultationCharge;
+    @Override
+    public void markAsPaid() {
+        this.status = "PAID";
     }
 
-    public void setMedicineCharge(double medicineCharge) {
-        this.medicineCharge = medicineCharge;
+    @Override
+    public String getPaymentDetails() {
+        return String.format("Bill #%d | Appointment: %d | Amount: ₹%.2f | Status: %s",
+                id, appointment.getAppointmentId(), amount, status);
     }
 
-    public void setTestCharge(double testCharge) {
-        this.testCharge = testCharge;
+    @Override
+    public String toString() {
+        return getPaymentDetails();
     }
-
-    public void setPaymentStatus(boolean paymentStatus) {
-        this.paymentStatus = paymentStatus;
-    }
-
-    
-    
 }
